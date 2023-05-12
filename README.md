@@ -12,6 +12,7 @@
 ## How do I call the API?
 
 Link for batch api: https://linear-regression-yqdqf5yqsq-ts.a.run.app/batch/[0.5,0.2,0.6]
+
 Link for stream api: https://linear-regression-yqdqf5yqsq-ts.a.run.app/stream/0.5
 
 ## Repository Content
