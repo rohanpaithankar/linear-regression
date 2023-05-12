@@ -23,7 +23,7 @@ class predict_batch(Resource):
 			data.append(result)
 			return result
 		except Exception as e:
-			return "Invalid input. Pass a float argument like this - URL/stream/[1.0,0.5,0.6,..]"
+			return "Invalid input. Pass an argument like this - URL/stream/[1.0,0.5,0.6,..]"
 
 class predict_stream(Resource):
 	def get(self,stream_input):
@@ -36,7 +36,7 @@ class predict_stream(Resource):
 			data.append(result)
 			return result
 		except Exception as e:
-			return "Invalid input. Pass a float argument like this - URL/stream/0.5"
+			return "Invalid input. Pass an argument like this - URL/stream/0.5"
 
 #api.add_resource(predict_stream, '/')
 api.add_resource(predict_batch, '/batch/<batch_input>')
