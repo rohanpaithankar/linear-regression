@@ -8,6 +8,6 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'linear-regression', '--image', 'gcr.io/tensile-pier-384007/ml-eng-challenge', '--region', 'australia-southeast1']
+  args: ['run', 'deploy', 'linear-regression', '--image', 'gcr.io/tensile-pier-384007/ml-eng-challenge', '--region', 'australia-southeast1','--allow-unauthenticated']
 images:
 - gcr.io/tensile-pier-384007/ml-eng-challenge
