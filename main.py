@@ -10,36 +10,36 @@ api = Api(app)
 data = []
 
 class predict_batch(Resource):
-	def get(self,lst):
+	def get(self,batch_input):
 		try:
-			lst_num = lst.strip('][').split(',')
-			lst_int = [eval(i) for i in lst_num]
-			lst_int = np.array(lst_int).reshape(len(lst_num),1)
-			lst_int = lst_int.tolist()
+			batch_lst = batch_input.strip('][').split(',')
+			lst = [eval(i) for i in batch_lst]
+			lst = np.array(lst).reshape(len(lst),1)
+			lst = lst.tolist()
 			lr = pickle.load(open('model/lr_model.pkl','rb'))
-			prediction = lr.predict(lst_int)
+			prediction = lr.predict(lst)
 			prediction = prediction.tolist()
-			temp = {'Predictions': prediction}
-			data.append(temp)
-			return temp
-		except:
+			result = {'Predictions': prediction}
+			data.append(result)
+			return result
+		except Exception as e:
 			return "Invalid input. Pass a float argument like this - URL/stream/[1.0,0.5,0.6,..]"
 
 class predict_stream(Resource):
 	def get(self,stream_input):
 		try:
-			input_int = [eval(stream_input)]
+			stream = [eval(stream_input)]
 			lr = pickle.load(open('model/lr_model.pkl','rb'))
-			prediction = lr.predict(input_int)
+			prediction = lr.predict(stream)
 			prediction = prediction.tolist()
-			temp = {'Prediction': prediction}
-			data.append(temp)
-			return temp
-		except:
+			result = {'Prediction': prediction}
+			data.append(result)
+			return result
+		except Exception as e:
 			return "Invalid input. Pass a float argument like this - URL/stream/0.5"
 
 #api.add_resource(predict_stream, '/')
-api.add_resource(predict_batch, '/batch/<lst>')
+api.add_resource(predict_batch, '/batch/<batch_input>')
 api.add_resource(predict_stream, '/stream/<stream_input>')
 
 if __name__ == '__main__':

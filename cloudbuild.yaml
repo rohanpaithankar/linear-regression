@@ -1,0 +1,13 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/tensile-pier-384007/ml-eng-challenge', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/tensile-pier-384007/ml-eng-challenge']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'linear-regression', '--image', 'gcr.io/tensile-pier-384007/ml-eng-challenge', '--region', 'australia-southeast1','--allow-unauthenticated']
+images:
+- gcr.io/tensile-pier-384007/ml-eng-challenge
