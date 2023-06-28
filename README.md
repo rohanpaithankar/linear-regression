@@ -25,7 +25,7 @@ The repository has the following folders/files that are required to deploy the s
 - `requirements.txt`: Python dependencies to be installed at the start of runtime.
 - `setup.py`        : To package `model` module.
 
-## What would a production pipeline look like? (Classified as critical vs nice to have for this specific challenge only)
+## What would a production pipeline look like?
 
 ### Testing (critical)
 An ML model can often be a black-box. In order to ensure that the model is capable of generalising well to data, it is essential to test the model on a held out dataset through multiple training iterations and by varying other hyperparameters.
