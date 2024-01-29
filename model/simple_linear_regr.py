@@ -19,7 +19,6 @@ class SimpleLinearRegression:
             loss: the sum of squared error
 
         """
-        #ToDO calculate the loss. use the sum of squared error formula for simplicity
         loss = np.sum(np.square(y_hat - y))
 
         self.losses.append(loss)
@@ -43,10 +42,8 @@ class SimpleLinearRegression:
         :return:
             sets updated W and b to the instance Object (self)
         """
-        # ToDo calculate dW & db.
         dW = -2/len(X) * np.sum(X.T.dot(y - y_hat))
         db = -2/len(X) * np.sum(y - y_hat)
-        #  ToDO update the self.W and self.b using the learning rate and the values for dW and db
         self.W = self.W - (self.lr * dW)
         print(self.W)
         self.b = self.b - (self.lr * db)
@@ -77,7 +74,6 @@ class SimpleLinearRegression:
         :return:
             y_hat: the predicted output
         """
-        #ToDO calculate the predicted output y_hat. remember the function of a line is defined as y = WX + b
         y_hat = np.dot(X,self.W) + self.b
         return y_hat
 
